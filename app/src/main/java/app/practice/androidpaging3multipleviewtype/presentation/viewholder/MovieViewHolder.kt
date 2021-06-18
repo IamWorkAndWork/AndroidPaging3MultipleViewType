@@ -22,7 +22,7 @@ class MovieViewHolder(private val binding: ItemMovieBinding) :
     }
 
     fun bind(item: MovieModel) {
-        binding.titleTextView.text = item.shelftTtle + " | items : ${item.items.size}"
+        binding.titleTextView.text = item.shelftTitle + " | items : ${item.items.size}"
     }
 
 }

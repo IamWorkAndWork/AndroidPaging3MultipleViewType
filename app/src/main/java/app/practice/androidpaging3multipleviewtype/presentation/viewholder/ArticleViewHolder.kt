@@ -17,7 +17,7 @@ class ArticleViewHolder(private val binding: ItemArticleBinding) : RecyclerView.
     }
 
     fun bind(item: ArticleModel) {
-        binding.titleTextView.text = item.shelftTtle + " | items : ${item.items.size}"
+        binding.titleTextView.text = item.shelftTitle + " | items : ${item.items.size}"
     }
 
 }

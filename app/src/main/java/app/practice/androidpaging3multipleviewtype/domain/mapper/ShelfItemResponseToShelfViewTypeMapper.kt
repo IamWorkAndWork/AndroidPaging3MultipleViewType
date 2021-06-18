@@ -11,7 +11,10 @@ class ShelfItemResponseToShelfViewTypeMapperImpl : ShelfItemResponseToShelfViewT
 
     override suspend fun transform(shelfItemResponse: ShelfItemResponse): ShelfViewType {
         return when (shelfItemResponse.viewType) {
-            0 -> ShelfViewType.Banner(id = shelfItemResponse.id, name = shelfItemResponse.name)
+            0 -> ShelfViewType.Banner(
+                id = shelfItemResponse.id,
+                name = shelfItemResponse.name
+            )
             1 -> ShelfViewType.ArticleShelf(
                 id = shelfItemResponse.id,
                 title = shelfItemResponse.name,

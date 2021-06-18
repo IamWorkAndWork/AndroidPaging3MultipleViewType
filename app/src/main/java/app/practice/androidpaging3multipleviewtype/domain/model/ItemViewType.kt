@@ -17,21 +17,21 @@ sealed class ItemViewType {
 
     data class MovieModel(
         override val shelfId: String,
-        val shelftTtle: String,
+        val shelftTitle: String,
         val shelfIcon: String,
         val items: List<MovieItemModel>,
     ) : ItemViewType()
 
     data class MusicModel(
         override val shelfId: String,
-        val shelftTtle: String,
+        val shelftTitle: String,
         val shelfIcon: String,
         val items: List<MusicItemModel>
     ) : ItemViewType()
 
     data class ArticleModel(
         override val shelfId: String,
-        val shelftTtle: String,
+        val shelftTitle: String,
         val shelfIcon: String,
         val items: List<ArticleItemModel>
     ) : ItemViewType()

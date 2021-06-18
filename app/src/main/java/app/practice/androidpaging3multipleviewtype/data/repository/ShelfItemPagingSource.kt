@@ -79,7 +79,7 @@ class ShelfItemPagingSource @Inject constructor(
         val movieItemList = dataSource.getMovie(shelfId = shelfId)
         return MovieModel(
             shelfId = shelfId,
-            shelftTtle = shelfViewType.title,
+            shelftTitle = shelfViewType.title,
             shelfIcon = shelfViewType.icon,
             items = movieItemList.map { item ->
                 MovieItemModel(
@@ -97,7 +97,7 @@ class ShelfItemPagingSource @Inject constructor(
         val musicItemList = dataSource.getMusic(shelfId = shelfId)
         return MusicModel(
             shelfId = shelfId,
-            shelftTtle = shelfViewType.title,
+            shelftTitle = shelfViewType.title,
             shelfIcon = shelfViewType.icon,
             items = musicItemList.map { item ->
                 MusicItemModel(
@@ -115,7 +115,7 @@ class ShelfItemPagingSource @Inject constructor(
         val articleItemList = dataSource.getArticle(shelfId = shelfId)
         return ArticleModel(
             shelfId = shelfId,
-            shelftTtle = shelfViewType.title,
+            shelftTitle = shelfViewType.title,
             shelfIcon = shelfViewType.icon,
             items = articleItemList.map { item ->
                 ArticleItemModel(
