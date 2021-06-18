@@ -35,10 +35,10 @@ class FakeDataApi : DataApi {
 
         for (i in 0..shelfSize) {
 
-            val randomType = Random.nextInt(0, 4)
+            val randomType = Random.nextInt(0, 5)
 
             shelfItemResponseList.add(
-                ShelfItemResponse(id = i.toString(), name = "Shelf ${i + 1}", viewType = randomType)
+                ShelfItemResponse(id = i.toString(), name = "Shelf Title ${i + 1}", viewType = randomType)
             )
 
         }

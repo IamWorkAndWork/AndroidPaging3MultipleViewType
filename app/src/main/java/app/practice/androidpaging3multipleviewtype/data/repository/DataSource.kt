@@ -43,7 +43,7 @@ class DataSourceImpl @Inject constructor(
     }
 
     override suspend fun getLargeBanner(shelfId: String): LargeBannerResponse {
-        delay(Random.nextLong(200, 1800))
+        delay(Random.nextLong(200, 500))
         return dataApi.getLargeBanner(shelfId = shelfId)
     }
 

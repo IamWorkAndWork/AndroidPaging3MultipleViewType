@@ -8,13 +8,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import app.practice.androidpaging3multipleviewtype.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @FlowPreview
 @AndroidEntryPoint
@@ -48,6 +48,17 @@ class HomeFragment : Fragment() {
 
         observeViewModel()
         initWidget()
+        initListener()
+    }
+
+    private fun initListener() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            homeAdapter.refresh()
+        }
+
+        homeAdapter.addLoadStateListener {
+            binding.swipeRefreshLayout.isRefreshing = it.refresh is LoadState.Loading
+        }
     }
 
     private fun initWidget() {

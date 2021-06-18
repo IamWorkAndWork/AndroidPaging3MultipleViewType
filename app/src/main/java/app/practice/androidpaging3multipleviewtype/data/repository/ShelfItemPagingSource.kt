@@ -2,8 +2,8 @@ package app.practice.androidpaging3multipleviewtype.data.repository
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import app.practice.androidpaging3multipleviewtype.data.model.ItemResponse
 import app.practice.androidpaging3multipleviewtype.domain.model.*
+import app.practice.androidpaging3multipleviewtype.domain.model.ItemViewType.*
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject

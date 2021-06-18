@@ -3,7 +3,6 @@ package app.practice.androidpaging3multipleviewtype.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import app.practice.androidpaging3multipleviewtype.data.model.ItemResponse
 import app.practice.androidpaging3multipleviewtype.domain.model.ItemViewType
 import app.practice.androidpaging3multipleviewtype.domain.model.ShelfViewType
 import kotlinx.coroutines.flow.Flow
