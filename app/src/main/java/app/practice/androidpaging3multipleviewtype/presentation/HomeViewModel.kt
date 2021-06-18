@@ -5,6 +5,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import app.practice.androidpaging3multipleviewtype.data.model.ItemResponse
 import app.practice.androidpaging3multipleviewtype.domain.GetShelfListUseCase
+import app.practice.androidpaging3multipleviewtype.domain.model.ItemViewType
 import app.practice.androidpaging3multipleviewtype.domain.model.ShelfViewType
 import app.practice.androidpaging3multipleviewtype.domain.usecase.GetShelfItemListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,7 +25,7 @@ class HomeViewModel @Inject constructor(
 
     val showLoading: StateFlow<Boolean> = _showLoading
 
-    fun loadDataEachShelf(): Flow<PagingData<ItemResponse>> {
+    fun loadDataEachShelf(): Flow<PagingData<ItemViewType>> {
         return getShelfListUseCase.execute()
             .flatMapMerge { shelfViewTypeList ->
                 getShelfItemListUseCase.execute(shelfViewTypeList = shelfViewTypeList)

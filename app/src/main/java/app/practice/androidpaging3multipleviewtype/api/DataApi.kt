@@ -1,9 +1,8 @@
 package app.practice.androidpaging3multipleviewtype.api
 
-import app.practice.androidpaging3multipleviewtype.data.model.ItemResponse
-import app.practice.androidpaging3multipleviewtype.data.model.ShelfItemResponse
-import app.practice.androidpaging3multipleviewtype.data.model.ShelfResponse
+import app.practice.androidpaging3multipleviewtype.data.model.*
 import retrofit2.http.GET
+import retrofit2.http.Query
 import kotlin.random.Random
 
 interface DataApi {
@@ -11,8 +10,20 @@ interface DataApi {
     @GET("shelfList")
     suspend fun getShelfList(shelfSize: Int): ShelfResponse
 
-    @GET("shelfItemById")
-    suspend fun getShelfItemById(id: String): List<ItemResponse>
+    @GET("getBanner")
+    suspend fun getBanner(@Query("shelfId") shelfId: String): BannerResponse
+
+    @GET("getBanner")
+    suspend fun getLargeBanner(@Query("shelfId") shelfId: String): LargeBannerResponse
+
+    @GET("getMovie")
+    suspend fun getMovie(@Query("shelfId") shelfId: String): List<MovieItemResponse>
+
+    @GET("getArticle")
+    suspend fun getArticle(@Query("shelfId") shelfId: String): List<ArticleItemResponse>
+
+    @GET("getMusic")
+    suspend fun getMusic(@Query("shelfId") shelfId: String): List<MusicItemResponse>
 
 }
 
@@ -38,25 +49,63 @@ class FakeDataApi : DataApi {
 
     }
 
-    override suspend fun getShelfItemById(id: String): List<ItemResponse> {
+    override suspend fun getBanner(id: String): BannerResponse {
+        return BannerResponse(
+            bannerId = "1",
+            bannerSize = 100,
+        )
+    }
 
-        val itemResponseList = mutableListOf<ItemResponse>()
+    override suspend fun getLargeBanner(id: String): LargeBannerResponse {
+        return LargeBannerResponse(
+            bannerId = "1",
+            bannerSize = 100,
+            bannerDescription = "bannerDescription"
+        )
+    }
 
-        for (i in 0 until 20) {
-            itemResponseList.add(
-                ItemResponse(
-                    id = i.toString(),
-                    title = "title ${i + 1}",
-                    description = "description ${i + 1}",
-                    channel = "Chanel ${i + 1}",
-                    artist = "Artist ${i + 1}",
-                    shelfId = id
-                )
-            )
+    override suspend fun getMovie(id: String): List<MovieItemResponse> {
+        val itemList = mutableListOf<MovieItemResponse>()
+        for (i in 0 until 30) {
+            MovieItemResponse(
+                description = "description $i",
+                id = i.toString(),
+                title = "title $i"
+            ).also { model ->
+                itemList.add(model)
+            }
         }
+        return itemList
+    }
 
-        return itemResponseList
+    override suspend fun getArticle(id: String): List<ArticleItemResponse> {
+        val itemList = mutableListOf<ArticleItemResponse>()
+        for (i in 0 until 30) {
+            ArticleItemResponse(
+                description = "description $i",
+                id = i.toString(),
+                title = "title $i",
+                channel = "channel $i"
+            ).also { model ->
+                itemList.add(model)
+            }
+        }
+        return itemList
+    }
 
+    override suspend fun getMusic(id: String): List<MusicItemResponse> {
+        val itemList = mutableListOf<MusicItemResponse>()
+        for (i in 0 until 30) {
+            MusicItemResponse(
+                description = "description $i",
+                id = i.toString(),
+                title = "title $i",
+                artist = "artist $i"
+            ).also { model ->
+                itemList.add(model)
+            }
+        }
+        return itemList
     }
 
 }

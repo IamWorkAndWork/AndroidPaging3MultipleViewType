@@ -4,12 +4,13 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import app.practice.androidpaging3multipleviewtype.data.model.ItemResponse
+import app.practice.androidpaging3multipleviewtype.domain.model.ItemViewType
 import app.practice.androidpaging3multipleviewtype.domain.model.ShelfViewType
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 interface ShelfItemRepository {
-    fun execute(shelfViewTypeList: List<ShelfViewType>): Flow<PagingData<ItemResponse>>
+    fun execute(shelfViewTypeList: List<ShelfViewType>): Flow<PagingData<ItemViewType>>
 }
 
 class ShelfItemRepositoryImpl @Inject constructor(
@@ -20,7 +21,7 @@ class ShelfItemRepositoryImpl @Inject constructor(
         const val SHELF_SIZE = 50
     }
 
-    override fun execute(shelfViewTypeList: List<ShelfViewType>): Flow<PagingData<ItemResponse>> {
+    override fun execute(shelfViewTypeList: List<ShelfViewType>): Flow<PagingData<ItemViewType>> {
 
         return Pager(
             config = PagingConfig(
